@@ -1,1 +1,42 @@
-<p>dia-box works!</p>
+<h1 mat-dialog-title>
+  Row Action : <strong>{{ action }}</strong>
+</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your First Name</mat-label>
+    <input
+      matInput
+      placeholder="First Name"
+      [formControl]="firstName"
+      required
+    />
+    <!-- <mat-error *ngIf="firstName.invalid">{{ getErrorMessageName() }}</mat-error> -->
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your Last Name</mat-label>
+    <input matInput placeholder="Last Name" [formControl]="lastName" required />
+    <!-- <mat-error *ngIf="lastName.invalid">{{ getErrorMessage() }}</mat-error> -->
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input
+      matInput
+      placeholder="example@example.com"
+      [formControl]="email"
+      required
+    />
+    <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+  </mat-form-field>
+  <ng-template #elseTemplate>
+    Sure to delete <b>{{ local_data.firstName }}</b
+    >?
+  </ng-template>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()" [disabled]="">
+    {{ action }}
+  </button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+    Cancel
+  </button>
+</div>

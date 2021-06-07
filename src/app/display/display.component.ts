@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DiaBoxComponent } from './../dia-box/dia-box.component';
 
 export interface userInput {
   firstName: string;
@@ -16,7 +18,7 @@ const ELEMENT_DATA: userInput[] = [
   styleUrls: ['./display.component.css'],
 })
 export class DisplayComponent implements OnInit {
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -25,5 +27,10 @@ export class DisplayComponent implements OnInit {
 
   openDialog(action: any, obj: any) {
     console.log('add Button clicked');
+    obj.action = action;
+    const dialogRef = this.dialog.open(DiaBoxComponent, {
+      width: '250px',
+      data: obj,
+    });
   }
 }
