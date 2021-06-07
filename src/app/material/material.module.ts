@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-const materialComponents = [MatDialogModule, MatTableModule];
+const materialComponents = [
+  MatDialogModule,
+  MatTableModule,
+  MatInputModule,
+  MatFormFieldModule,
+];
 
 @NgModule({
   imports: [materialComponents],

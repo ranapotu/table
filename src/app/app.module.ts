@@ -8,9 +8,10 @@ import { DisplayComponent } from './display/display.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
+import { DiaBoxComponent } from './dia-box/dia-box.component';
 
 @NgModule({
-  declarations: [AppComponent, DisplayComponent, DialogComponent],
+  declarations: [AppComponent, DisplayComponent, DialogComponent, DiaBoxComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
