@@ -9,12 +9,19 @@
       placeholder="First Name"
       [formControl]="firstName"
       required
+      [(ngModel)]="local_data.firstName"
     />
     <!-- <mat-error *ngIf="firstName.invalid">{{ getErrorMessageName() }}</mat-error> -->
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Enter your Last Name</mat-label>
-    <input matInput placeholder="Last Name" [formControl]="lastName" required />
+    <input
+      matInput
+      placeholder="Last Name"
+      [formControl]="lastName"
+      [(ngModel)]="local_data.lastName"
+      required
+    />
     <!-- <mat-error *ngIf="lastName.invalid">{{ getErrorMessage() }}</mat-error> -->
   </mat-form-field>
   <mat-form-field appearance="fill">
@@ -24,6 +31,7 @@
       placeholder="example@example.com"
       [formControl]="email"
       required
+      [(ngModel)]="local_data.email"
     />
     <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
   </mat-form-field>
@@ -33,7 +41,7 @@
   </ng-template>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="doAction()" [disabled]="">
+  <button mat-button (click)="doAction()">
     {{ action }}
   </button>
   <button mat-button (click)="closeDialog()" mat-flat-button color="warn">

@@ -1,12 +1,7 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
-
-export interface Userdata {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
+import { UserInput } from '../user-input';
 
 @Component({
   selector: 'app-dia-box',
@@ -19,7 +14,7 @@ export class DiaBoxComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DiaBoxComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: Userdata
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: UserInput
   ) {
     console.log(data);
     this.local_data = { ...data };
