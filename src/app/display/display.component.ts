@@ -2,10 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DiaBoxComponent } from './../dia-box/dia-box.component';
 import { UserInput } from '../user-input';
+import { ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
 
 const ELEMENT_DATA: UserInput[] = [
-  { firstName: 'Rana', lastName: 'Potu', email: 'rana.potu@gmail.com' },
-  { firstName: 'Ivansh', lastName: 'Potu', email: 'ivansh.potu@gmail.com' },
+  { id: 1, firstName: 'Rana', lastName: 'Potu', email: 'rana.potu@gmail.com' },
+  {
+    id: 2,
+    firstName: 'Ivansh',
+    lastName: 'Potu',
+    email: 'ivansh.potu@gmail.com',
+  },
 ];
 @Component({
   selector: 'app-display',
@@ -17,7 +24,15 @@ export class DisplayComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'action'];
+  @ViewChild(MatTable, { static: true }) table!: MatTable<UserInput>;
+
+  displayedColumns: string[] = [
+    'id',
+    'firstName',
+    'lastName',
+    'email',
+    'action',
+  ];
   dataSource = ELEMENT_DATA;
 
   openDialog(action: any, obj: any) {
@@ -31,6 +46,7 @@ export class DisplayComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result.event == 'Add') {
         this.addRowData(result.data);
+        console.log(result.data);
       } else if (result.event == 'Update') {
         this.updateRowData(result.data);
       } else if (result.event == 'Delete') {
@@ -40,8 +56,8 @@ export class DisplayComponent implements OnInit {
   }
 
   addRowData(row_obj: UserInput) {
-    console.log('add button');
     this.dataSource.push({
+      id: ELEMENT_DATA.length + 1,
       firstName: row_obj.firstName,
       lastName: row_obj.lastName,
       email: row_obj.email,
@@ -55,7 +71,7 @@ export class DisplayComponent implements OnInit {
       if (value.firstName === row_obj.firstName) {
         value.firstName = row_obj.firstName;
       } else if (value.lastName === row_obj.lastName) {
-        value.firstName = row_obj.firstName;
+        value.lastName = row_obj.lastName;
       } else if (value.email === row_obj.email) {
         value.email = row_obj.email;
       }

@@ -4,10 +4,14 @@
       Add Row
     </button>
   </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" #mytable class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>id</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
     <!-- Name Column -->
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef>First Name</th>

@@ -9,7 +9,7 @@
       placeholder="First Name"
       [formControl]="firstName"
       required
-      [(ngModel)]="local_data.firstName"
+      [(ngModel)]="form_data.firstName"
     />
     <!-- <mat-error *ngIf="firstName.invalid">{{ getErrorMessageName() }}</mat-error> -->
   </mat-form-field>
@@ -19,7 +19,7 @@
       matInput
       placeholder="Last Name"
       [formControl]="lastName"
-      [(ngModel)]="local_data.lastName"
+      [(ngModel)]="form_data.lastName"
       required
     />
     <!-- <mat-error *ngIf="lastName.invalid">{{ getErrorMessage() }}</mat-error> -->
@@ -31,12 +31,12 @@
       placeholder="example@example.com"
       [formControl]="email"
       required
-      [(ngModel)]="local_data.email"
+      [(ngModel)]="form_data.email"
     />
     <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
   </mat-form-field>
   <ng-template #elseTemplate>
-    Sure to delete <b>{{ local_data.firstName }}</b
+    Sure to delete <b>{{ form_data.firstName }}</b
     >?
   </ng-template>
 </div>

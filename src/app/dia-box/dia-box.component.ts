@@ -9,22 +9,23 @@ import { UserInput } from '../user-input';
   styleUrls: ['./dia-box.component.css'],
 })
 export class DiaBoxComponent implements OnInit {
-  action: string | undefined;
-  local_data: any;
+  action: string;
+  form_data: any;
 
   constructor(
     public dialogRef: MatDialogRef<DiaBoxComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UserInput
   ) {
     console.log(data);
-    this.local_data = { ...data };
-    this.action = this.local_data.action;
+    this.form_data = { ...data };
+    this.action = this.form_data.action;
   }
 
   ngOnInit(): void {}
 
   doAction() {
-    this.dialogRef.close({ event: this.action, data: this.local_data });
+    this.dialogRef.close({ event: this.action, data: this.form_data });
+    console.log(this.data);
   }
 
   closeDialog() {
